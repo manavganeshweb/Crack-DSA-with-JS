@@ -1,0 +1,32 @@
+// Problem: Two Sum
+// Difficulty: Easy
+
+// quetion-217 contain duplicate
+function containDup(num) {
+    let set = new Set()
+
+    for(let n of num){
+        if(set.has(n)) return true
+        set.add(n)
+    }
+    return false
+}
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+// quetion-219 contain duplicate 2
+function containDup(nums, k){
+    let set = new Set()
+
+    for(let i = 0; i < nums.length;i++){
+        if(set.size > k) set.delete(nums[i - k])
+
+        if(set.has(nums[i])) return true
+
+        set.add(nums[i])
+    }
+    return false
+}
+
+// Time Complexity: O(n)
+// Space Complexity: O(k)
