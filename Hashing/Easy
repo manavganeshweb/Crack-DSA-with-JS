@@ -1,7 +1,16 @@
-// Problem: Two Sum
-// Difficulty: Easy
+// 001-problem Two sum
+var twoSum = function(nums, target) {
+    let map = new Map()
+    for(let i = 0; i < nums.length; i++){
+        let comp = target - nums[i]
+        if(map.has(comp)) return [ map.get(comp), i]
+        map.set(nums[i], i)
+    }
+};
+// Time Complexity: O(n)
+// space Complexity: O(n)
 
-// quetion-217 contain duplicate
+// 217-problem contain duplicate
 function containDup(num) {
     let set = new Set()
 
@@ -14,7 +23,7 @@ function containDup(num) {
 // Time Complexity: O(n)
 // Space Complexity: O(n)
 
-// quetion-219 contain duplicate 2
+// 219-problem contain duplicate 2
 function containDup(nums, k){
     let set = new Set()
 
@@ -27,6 +36,22 @@ function containDup(nums, k){
     }
     return false
 }
-
 // Time Complexity: O(n)
 // Space Complexity: O(k)
+
+// 242-problem valid anagram
+var isAnagram = function (s, t) {
+    let arr = new Array(26).fill(0)
+    if (s.length !== t.length) return false;
+    for (let i = 0; i < s.length; i++) {
+        arr[s.charCodeAt(i) - 97]++
+    }
+    for (let i = 0; i < t.length; i++) {
+        let ind = t.charCodeAt(i) - 97
+        arr[ind]--
+        if (arr[ind] < 0) return false
+    }
+    return true
+};
+// Time Complexity: O(n)
+// Space Complexity: O(1)
