@@ -10,6 +10,32 @@ var twoSum = function(nums, target) {
 // Time Complexity: O(n)
 // space Complexity: O(n)
 
+//202-problem happy number 
+var getNext = function (num) {
+    let sum = 0
+    while (num > 0) {
+        let digit = num % 10
+        sum += digit * digit
+        num = Math.floor(num / 10)
+    }
+    return sum
+}
+var isHappy = function (n) {
+
+    let slow = n, fast = n;
+
+    while (true) {
+        slow = getNext(slow)
+        fast = getNext(getNext(fast))
+
+        if (fast == 1) return true
+        if (slow == fast) return false
+    }
+
+};
+// Time Complexity: O(n)
+// space Complexity: O(n)
+
 // 217-problem contain duplicate
 function containDup(num) {
     let set = new Set()
