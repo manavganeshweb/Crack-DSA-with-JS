@@ -1,22 +1,43 @@
 
+// 49-problem Group Anagrams
+var groupAnagrams = function (strs) {
+    let map = new Map()
+
+    for (let str of strs) {
+        let arr = new Array(26).fill(0)
+        for (let ch of str) {
+            arr[ch.charCodeAt(0) - 97]++
+        }
+        let key = arr.join('#')
+        if (!map.has(key)) map.set(key, [])
+        map.get(key).push(str)
+    }
+    return Array.from(map.values())
+};
+// Time Complexity: O(n)
+// Space Complexity: O(n*k)
+// If interviewer says: “Make it O(n)”
+// Answer : “We can’t do strictly O(n) because we must process each character.
+// So the optimal bound is O(n * k), where k is string length.”
+
 // 128-problem Longest Consecutive Sequence
-var longestConsecutive = function(nums) {
+var longestConsecutive = function (nums) {
     let set = new Set(nums)
     let longest = 0
 
-    for(let num of set){
-        if(!set.has(num - 1)){
+    for (let num of set) {
+        if (!set.has(num - 1)) {
             let current = num
             let count = 1
 
-            while(set.has(current + 1)){
+            while (set.has(current + 1)) {
                 current++
                 count++
             }
-            longest = Math.max(longest,count)
+            longest = Math.max(longest, count)
         }
     }
-    return longest 
+    return longest
 };
 // Time Complexity: O(n)
 // Space Complexity: O(n)
