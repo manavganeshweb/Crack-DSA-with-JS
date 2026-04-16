@@ -41,3 +41,29 @@ var longestConsecutive = function (nums) {
 };
 // Time Complexity: O(n)
 // Space Complexity: O(n)
+
+// 438-problem Find All Anagrams in a String
+var findAnagrams = function (s, p) {
+    let result = []
+    let count = new Array(26).fill(0)
+    for (let ch of p) {
+        count[ch.charCodeAt(0) - 97]++
+    }
+    let left = 0
+    for (let right = 0; right < s.length; right++) {
+        count[s.charCodeAt(right) - 97]--
+
+        if (right - left + 1 > p.length) {
+            count[s.charCodeAt(left) - 97]++
+            left++
+        }
+        if (right - left + 1 === p.length) {
+            if (count.every(val => val === 0)) {
+                result.push(left)
+            }
+        }
+    }
+    return result 
+};
+// Time Complexity: O(n * 26) ≈ O(n) 
+// Space Complexity: O(1)
