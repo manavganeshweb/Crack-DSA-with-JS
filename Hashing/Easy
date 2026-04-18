@@ -85,4 +85,23 @@ var isAnagram = function (s, t) {
 // 383-problem Ransom Note
 // Arrays-Easy
 
+// 3005-problem Count Elements With Maximum Frequency
+var maxFrequencyElements = function (nums) {
+    let map = new Map()
+    let maxfre = 0
 
+    for (let num of nums) {
+        let freq = (map.get(num) || 0) + 1
+        map.set(num, freq)
+        maxfre = Math.max(maxfre, freq)
+    }
+    let count = 0
+    for (let [num, freq] of map) {
+        if (freq === maxfre) {
+            count += freq
+        }
+    }
+    return count 
+};
+// Time Complexity: O(n)
+// Space Complexity: O(1)
