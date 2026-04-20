@@ -1,9 +1,9 @@
 // 001-problem Two sum
-var twoSum = function(nums, target) {
+var twoSum = function (nums, target) {
     let map = new Map()
-    for(let i = 0; i < nums.length; i++){
+    for (let i = 0; i < nums.length; i++) {
         let comp = target - nums[i]
-        if(map.has(comp)) return [ map.get(comp), i]
+        if (map.has(comp)) return [map.get(comp), i]
         map.set(nums[i], i)
     }
 };
@@ -40,8 +40,8 @@ var isHappy = function (n) {
 function containDup(num) {
     let set = new Set()
 
-    for(let n of num){
-        if(set.has(n)) return true
+    for (let n of num) {
+        if (set.has(n)) return true
         set.add(n)
     }
     return false
@@ -50,13 +50,13 @@ function containDup(num) {
 // Space Complexity: O(n)
 
 // 219-problem contain duplicate 2
-function containDup(nums, k){
+function containDup(nums, k) {
     let set = new Set()
 
-    for(let i = 0; i < nums.length;i++){
-        if(set.size > k) set.delete(nums[i - k])
+    for (let i = 0; i < nums.length; i++) {
+        if (set.size > k) set.delete(nums[i - k])
 
-        if(set.has(nums[i])) return true
+        if (set.has(nums[i])) return true
 
         set.add(nums[i])
     }
@@ -85,6 +85,48 @@ var isAnagram = function (s, t) {
 // 383-problem Ransom Note
 // Arrays-Easy
 
+// 706-problem Design HashMap
+var MyHashMap = function () {
+    this.size = 1000
+    this.map = new Array(this.size).fill(null).map(() => [])
+};
+MyHashMap.prototype.put = function (key, value) {
+    let index = key % this.size
+    let bucket = this.map[index]
+    for (let pair of bucket) {
+        if (pair[0] === key) {
+            pair[1] = value
+            return
+        }
+    }
+    bucket.push([key, value])
+};
+MyHashMap.prototype.get = function (key) {
+    let index = key % this.size
+    let bucket = this.map[index]
+    if (bucket) {
+        for (let pair of bucket) {
+            if (pair[0] === key) return pair[1]
+        }
+    }
+    return -1
+}
+MyHashMap.prototype.remove = function (key) {
+let index = key % this.size 
+let bucket = this.map[index]
+   for (let i = 0; i < bucket.length; i++) {
+        if (bucket[i][0] === key) {
+            bucket.splice(i, 1);
+            return;
+        }
+    }
+};
+// Space and time Complexity:
+// put: O(1)
+// get: O(1)
+// remove: O(1)
+// to O(n)
+
 // 3005-problem Count Elements With Maximum Frequency
 var maxFrequencyElements = function (nums) {
     let map = new Map()
@@ -101,7 +143,8 @@ var maxFrequencyElements = function (nums) {
             count += freq
         }
     }
-    return count 
+    return count
 };
 // Time Complexity: O(n)
 // Space Complexity: O(1)
+
