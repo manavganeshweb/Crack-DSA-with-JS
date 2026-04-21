@@ -42,6 +42,49 @@ var longestConsecutive = function (nums) {
 // Time Complexity: O(n)
 // Space Complexity: O(n)
 
+// 347-problem Top K Frequent Elements
+function abc(nums, k) {
+    let count = new Map()
+
+    for (let num of nums) {
+        count.set(num, (count.get(num)||0)+1)
+    }
+    let heap = []
+    for(let [num,freq] of map){
+        heap.push([num,freq])
+        heap.sort((a,b)=> a[1]-b[1])
+
+        if(heap.length > k )
+            heap.shift()
+    }
+    return heap.map(pair => pair[0])
+}
+// Time Complexity: O(n log k)
+// Space Complexity: O(n)
+// for better approach, use bucket sort
+var topKFrequent = function (nums, k) {
+    let map = new Map()
+
+    for (let num of nums) {
+        map.set(num, (map.get(num) || 0) + 1)
+    }
+    let bucket = new Array(nums.length + 1).fill(null).map(() => [])
+
+    for (let [num, freq] of map) {
+        bucket[freq].push(num)
+    }
+    let result = []
+    for (let i = bucket.length - 1; i >= 0 && result.length < k; i--) {
+        for (let num of bucket[i]) {
+            result.push(num)
+            if (result.length === k) break
+        }
+    }
+    return result
+};
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
 // 438-problem Find All Anagrams in a String
 var findAnagrams = function (s, p) {
     let result = []
@@ -63,7 +106,8 @@ var findAnagrams = function (s, p) {
             }
         }
     }
-    return result 
+    return result
 };
 // Time Complexity: O(n * 26) ≈ O(n) 
 // Space Complexity: O(1)
+
