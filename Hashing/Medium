@@ -1,4 +1,22 @@
 
+// 3-problem Longest Substring Without Repeating Characters
+var lengthOfLongestSubstring = function (s) {
+    let map = new Map()
+    let left = 0
+    let result = 0
+
+    for (let right = 0; right < s.length; right++) {
+        let ch = s[right]
+        if (map.has(ch)) left = Math.max(left, (map.get(ch) + 1))
+        map.set(ch, right)
+        result = Math.max(result, right - left + 1)
+    }
+    return result
+};
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+
 // 49-problem Group Anagrams
 var groupAnagrams = function (strs) {
     let map = new Map()
@@ -127,3 +145,14 @@ var subarraySum = function (nums, k) {
 };
 // Time Complexity: O(n)
 // Space Complexity: O(n)
+
+
+function abc(strings){
+    let set = new Set()
+    let result = []
+let r = 0
+    for(let s of strings){
+    if(set.has(s)){}
+    set.add()
+    }
+}
