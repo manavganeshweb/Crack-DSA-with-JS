@@ -1,0 +1,18 @@
+function abc(s, t) {
+    let count = new Array(128).fill(0)
+    let requierd = t.length
+
+    if (t.length > s.length) return ""
+    for (let ch of t) {
+        count[ch.charCodeAt(0)]++
+    }
+    let right = 0, left = 0, requierd = t.length
+
+    let start = 0, minLen = Infinity
+
+
+    while( right < s.length){
+        let r = s.charCodeAt(right)
+        
+    }
+}
