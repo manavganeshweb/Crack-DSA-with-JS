@@ -1,18 +1,40 @@
-function abc(s, t) {
-    let count = new Array(128).fill(0)
-    let requierd = t.length
 
-    if (t.length > s.length) return ""
+// 76-problem Minimum Window Substring
+var minWindow = function (s, t) {
+    let map = new Map()
+
     for (let ch of t) {
-        count[ch.charCodeAt(0)]++
+        map.set(ch, (map.get(ch) || 0) + 1)
     }
-    let right = 0, left = 0, requierd = t.length
+    let right = 0, left = 0, start = 0
+    let minLen = Infinity
+    let count = t.length
 
-    let start = 0, minLen = Infinity
+    while (right < s.length) {
+        let rCh = s[right]
 
+        if (map.has(rCh)) {
+            if (map.get(rCh) > 0) count--
+            map.set(rCh, map.get(rCh) - 1)
+        }
+        right++
 
-    while( right < s.length){
-        let r = s.charCodeAt(right)
-        
+        while (count === 0) {
+            if (right - left < minLen) {
+                minLen = right - left
+                start = left
+            }
+            let lCh = s[left]
+            if (map.has(lCh)) {
+                map.set(lCh, map.get(lCh) + 1)
+                if (map.get(lCh) > 0) count++
+            }
+            left++
+        }
     }
-}
+    return minLen === Infinity ? "" : s.slice(start, start + minLen)
+};
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+// Why do we allow:    map.set(rCh, map.get(rCh) - 1)
+// because : we decrease freq because we got what we need and To track EXTRA characters in the window
