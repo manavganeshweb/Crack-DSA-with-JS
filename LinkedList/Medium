@@ -19,4 +19,4 @@ var detectCycle = function (head) {
     return null
 };
 // Time Complexity: O(n)
-// Space Complexity: O(n)
+// Space Complexity: O(1)
