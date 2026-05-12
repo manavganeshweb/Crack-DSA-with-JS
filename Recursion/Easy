@@ -27,6 +27,22 @@ var maxDepth = function (root) {
 // Time Complexity: O( n)
 // Space Complexity: O(h) hight of tree
 
+// 125-problem Valid Palindrome
+var isPalindrome = function (s) {
+    let str = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+    let left = 0
+    let right = str.length - 1
+
+    while (left < right) {
+        if (str[left] !== str[right]) return false
+        left++
+        right--
+    }
+    return true
+};
+// Time Complexity: O( n)
+// Space Complexity: O(n)
+
 // 509-problem Fibonacci Number
 var fib = function (n) {
     if (n <= 1) return n
@@ -42,3 +58,14 @@ var fib = function (n) {
 };
 // Time Complexity: O( n)
 // Space Complexity: O(1)
+
+function abc(sentence) {
+    let n = sentence.length
+    function solve(i) {
+        if (i >= n / 2) return true
+        if (sentence[i] != sentence[n - i - 1]) return false
+        return solve(i + 1)
+    }
+    return solve(o)
+}
+
