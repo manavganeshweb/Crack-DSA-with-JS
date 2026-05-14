@@ -1,4 +1,37 @@
 
+// 143-problem Reorder List
+var reorderList = function (head) {
+    let slow = fast = head
+    while (fast && fast.next) {
+        slow = slow.next
+        fast = fast.next.next
+    }
+
+    let cur = slow.next
+    slow.next = null
+    let pre = null
+
+    while (cur) {
+        let next = cur.next
+
+        cur.next = pre
+        pre = cur
+        cur = next
+    }
+
+    let first = head, second = pre
+
+    while (second) {
+        let temp1 = first.next, temp2 = second.next
+        first.next = second
+        second.next = temp1
+        first = temp1
+        second = temp2
+    }
+};
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
 // 172-problem Factorial Trailing Zeroes
 var trailingZeroes = function (n) {
     let count = 0

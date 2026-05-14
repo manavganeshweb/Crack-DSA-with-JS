@@ -59,13 +59,3 @@ var fib = function (n) {
 // Time Complexity: O( n)
 // Space Complexity: O(1)
 
-function abc(sentence) {
-    let n = sentence.length
-    function solve(i) {
-        if (i >= n / 2) return true
-        if (sentence[i] != sentence[n - i - 1]) return false
-        return solve(i + 1)
-    }
-    return solve(o)
-}
-
