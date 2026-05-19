@@ -54,6 +54,23 @@ var isPalindrome = function (s) {
 // Time Complexity: O( n)
 // Space Complexity: O(n)
 
+// 226-oroblem Invert Binary Tree
+var invertTree = function (root) {
+    if (!root) return null
+
+    let temp = root.right
+    root.right = root.left
+    root.left = temp
+    
+    invertTree(root.left)
+    invertTree(root.right)
+
+    return root
+};
+// Time Complexity: O( n)
+// Space Complexity: O(log n)
+
+
 // 509-problem Fibonacci Number
 var fib = function (n) {
     if (n <= 1) return n
