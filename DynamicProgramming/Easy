@@ -1,0 +1,16 @@
+
+// 9-problem Palindrome Number
+var isPalindrome = function (x) {
+    if (x < 0) return false
+    let dum = x
+    let reversed = 0
+    while (x > 0) {
+        let digit = x % 10
+        reversed = reversed * 10 + digit
+        x = Math.floor(x / 10)
+    }
+    return dum === reversed
+};
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
+// Using string : String-Easy

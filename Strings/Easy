@@ -1,4 +1,15 @@
 
+// 9-problem Palindrome Number
+var isPalindrome = function(x) {
+    let str = x.toString()
+    let reversed = str.split('').reverse().join('')
+
+    return str === reversed
+};
+// Time Complexity: O( n)
+// Space Complexity: O(n)
+// Using Math : DynamicProgramming-Easy
 
 // 438-problem Find All Anagrams in a String
 // Hashing-Medium
+
