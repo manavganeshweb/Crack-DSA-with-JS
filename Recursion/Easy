@@ -38,6 +38,18 @@ var maxDepth = function (root) {
 // Time Complexity: O( n)
 // Space Complexity: O(h) hight of tree
 
+// 112-problem Path Sum
+var hasPathSum = function (root, targetSum) {
+    if (!root) return false
+    if (!root.left && !root.right) return targetSum === root.val
+
+    let remaining = targetSum - root.val
+
+    return (hasPathSum(root.left, remaining) || hasPathSum(root.right, remaining))
+};
+// Time Complexity: O( n)
+// Space Complexity: O(n)
+
 // 125-problem Valid Palindrome
 var isPalindrome = function (s) {
     let str = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
