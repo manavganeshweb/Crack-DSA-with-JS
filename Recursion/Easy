@@ -73,7 +73,7 @@ var invertTree = function (root) {
     let temp = root.right
     root.right = root.left
     root.left = temp
-    
+
     invertTree(root.left)
     invertTree(root.right)
 
@@ -99,3 +99,20 @@ var fib = function (n) {
 // Time Complexity: O( n)
 // Space Complexity: O(1)
 
+// 543-problem Diameter of Binary Tree
+var diameterOfBinaryTree = function(root) {
+    let diameter= 0
+    function hight(node){
+        if(!node)return 0
+        let left = hight(node.left)
+        let right = hight(node.right)
+
+        diameter = Math.max(diameter, left + right)
+
+        return 1+ Math.max(left, right)
+    }
+    hight(root)
+    return diameter
+};
+// Time Complexity: O( n)
+// Space Complexity: O(n)
