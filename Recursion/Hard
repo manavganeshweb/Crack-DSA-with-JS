@@ -1,5 +1,33 @@
 
 
+// 23-problem Merge k Sorted Lists
+var mergeKLists = function (lists) {
+    let k = lists.length
+    if (k === 0) return null;
+    function merge(l1, l2) {
+        if (!l1) return l2
+        if (!l2) return l1
+        if (l1.val <= l2.val) {
+            l1.next = merge(l1.next, l2)
+            return l1
+        } else {
+            l2.next = merge(l1, l2.next)
+            return l2
+        }
+    }
+    function divide(start, end) {
+        if (start === end) return lists[start]
+        let mid = Math.floor((start + end) / 2)
+        let l1 = divide(start, mid)
+        let l2 = divide(mid + 1, end)
+        return merge(l1, l2)
+    }
+    return divide(0, k - 1)
+};
+// Time Complexity: O(n log k)
+// Space Complexity: O(log k )
+
+
 // 224-problem Basic Calculator
 var calculate = function(s) {
     let i = 0;
@@ -54,3 +82,4 @@ var calculate = function(s) {
 // Time Complexity: O(n)
 // Space Complexity: O(n)
 // using Stack : Stack-Hard
+
