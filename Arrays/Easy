@@ -18,3 +18,14 @@ var canConstruct = function (ransomNote, magazine) {
 };
 // Time Complexity: O(n+m)
 // Space Complexity: O(1)
+
+
+function abc(nums, k) {
+let comp = k
+    let map = new Map()
+    while (i < nums.length) {
+      map.set(i, nums[i])
+
+    }
+
+}
