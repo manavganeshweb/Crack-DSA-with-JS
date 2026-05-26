@@ -24,6 +24,25 @@ var threeSum = function (nums) {
 // Time Complexity: O(n^2)
 // Space Complexity: O(n)
 
+// 75-problem Sort Colors
+var sortColors = function (nums) {
+    let i = 0, j = 0, k = nums.length - 1
+    while (j <= k) {
+        if (nums[j] == 0) {
+            [nums[j], nums[i]] = [nums[i], nums[j]]
+            i++
+            j++
+        } else if (nums[j] == 2) {
+            [nums[j], nums[k]] = [nums[k], nums[j]]
+            k--
+        }else{
+            j++
+        }
+    }
+};
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
 // 167-problem Two Sum II
 var twoSum = function (numbers, target) {
     let left = 0, right = numbers.length - 1
