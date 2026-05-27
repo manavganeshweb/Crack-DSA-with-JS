@@ -60,3 +60,15 @@ var twoSum = function (numbers, target) {
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 
+// 179-problem Largest Number
+var largestNumber = function (nums) {
+    nums.sort((a, b) => {
+        let order1 = String(a) + String(b)
+        let order2 = String(b) + String(a)
+        return order2 - order1
+    })
+    if (nums[0] === 0) return "0"
+    return nums.join('')
+};
+// Time Complexity: O(n log n)
+// Space Complexity: O(n)
