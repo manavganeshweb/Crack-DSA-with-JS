@@ -30,3 +30,21 @@ var insert = function (intervals, newInterval) {
 };
 // Time Complexity: O(n)
 // Space Complexity: O(n)
+
+// 45 problem Jump Game 2
+var jump = function (nums) {
+    let jump = 0
+    let furthest = 0
+    let r = 0
+    for (let i = 0; i < nums.length - 1; i++) {
+
+        furthest = Math.max(furthest, i + nums[i])
+        if (i === r) {
+            jump++
+            r = furthest
+        }
+    }
+    return jump
+};
+// Time Complexity: O(n)
+// Space Complexity: O(1)
