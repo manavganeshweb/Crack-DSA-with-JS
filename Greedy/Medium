@@ -66,6 +66,29 @@ var jump = function (nums) {
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 
+// 134-problem Gas Station
+var canCompleteCircuit = function (gas, cost) {
+    let start = 0
+    let total = 0
+    let tank = 0
+
+    for (let i = 0; i < gas.length; i++) {
+        let diff = gas[i] - cost[i]
+
+        total += diff
+        tank += diff
+
+        if (tank < 0) {
+            start = i+1
+            tank = 0
+        }
+    }
+    return total >= 0 ? start : -1
+};
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+
 // 452-problem Minimum Number of Arrows to Burst Balloons
 var findMinArrowShots = function (points) {
     if (points.length === 0) return 0;
