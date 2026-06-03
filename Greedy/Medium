@@ -65,3 +65,22 @@ var jump = function (nums) {
 };
 // Time Complexity: O(n)
 // Space Complexity: O(1)
+
+// 452-problem Minimum Number of Arrows to Burst Balloons
+var findMinArrowShots = function (points) {
+    if (points.length === 0) return 0;
+    points.sort((a, b) => a[1] - b[1])
+    let arrow = 1
+    arrowPoi = points[0][1]
+
+    for (let i = 0; i < points.length; i++) {
+        if (points[i][0] > arrowPoi) {
+            arrow++
+            arrowPoi = points[i][1]
+        }
+    }
+    return arrow
+};
+// Sort by ending position and always shoot the arrow at the earliest possible end.
+// Time Complexity: O(n log n)
+// Space Complexity: O(1)
