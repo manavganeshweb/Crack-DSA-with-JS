@@ -1,0 +1,19 @@
+
+// 1423-problem Maximum Points You Can Obtain from Cards
+var maxScore = function(cardPoints, k) {
+    let maxSum = 0
+    for(let i = 0; i < k; i++){
+        maxSum += cardPoints[i]
+    }
+    let sum = maxSum
+    let r = cardPoints.length -1
+    for(let i = k-1; i >= 0; i--){
+        sum -= cardPoints[i]
+        sum += cardPoints[r]
+        r--
+        maxSum = Math.max(sum, maxSum)
+    }
+    return maxSum
+};
+// Time Complexity: O(k)
+// Space Complexity: O(1)
