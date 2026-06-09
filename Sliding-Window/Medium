@@ -1,3 +1,35 @@
+// 1004-problem Max Consecutive Ones III
+var longestOnes = function(nums, k) {
+
+    let i = 0;
+    let zeroCount = 0;
+    let maxLen = 0;
+
+    for (let j = 0; j < nums.length; j++) {
+
+        if (nums[j] === 0) {
+            zeroCount++;
+        }
+
+        while (zeroCount > k) {
+
+            if (nums[i] === 0) {
+                zeroCount--;
+            }
+
+            i++;
+        }
+
+        maxLen = Math.max(
+            maxLen,
+            j - i + 1
+        );
+    }
+
+    return maxLen;
+};
+// Time Complexity: O(k)
+// Space Complexity: O(1)
 
 // 1423-problem Maximum Points You Can Obtain from Cards
 var maxScore = function (cardPoints, k) {
