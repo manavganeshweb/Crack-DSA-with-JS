@@ -18,3 +18,57 @@ var findMaxAverage = function (nums, k) {
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 
+// 1652-problem Defuse the Bomb
+var decrypt = function(code, k) {
+    
+
+    let n = code.length;
+
+    let result = new Array(n).fill(0);
+
+    if (k === 0) return result;
+
+    let start, end;
+
+    if (k > 0) {
+
+        start = 1;
+
+        end = k;
+
+    } else {
+
+        start = n + k;
+
+        end = n - 1;
+
+        k = -k;
+
+    }
+
+    let windowSum = 0;
+
+    for (let i = start; i <= end; i++) {
+
+        windowSum += code[i % n];
+
+    }
+
+    for (let i = 0; i < n; i++) {
+
+        result[i] = windowSum;
+
+        windowSum -= code[start % n];
+
+        start++;
+
+        end++;
+
+        windowSum += code[end % n];
+
+    }
+
+    return result;
+};
+// Time Complexity: O(n)
+// Space Complexity: O(n)
