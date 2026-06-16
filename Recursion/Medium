@@ -1,4 +1,29 @@
 
+// 113-problem Path Sum II
+var pathSum = function(root, targetSum) {
+  let result = []
+
+  function solve(node, sum, temp){
+    if(!node)return;
+
+    temp.push(node.val)
+    sum+=node.val
+    if(!node.left && !node.right){
+        if(sum === targetSum){
+            result.push([...temp])
+        }
+    }else{
+        solve(node.left, sum, temp)
+        solve(node.right, sum, temp)
+    }
+    temp.pop()
+  }
+  solve(root, 0, [])
+  return result
+};
+// Time Complexity: O(n)
+// Space Complexity: O(h)
+
 // 143-problem Reorder List
 var reorderList = function (head) {
     let slow = fast = head
@@ -31,6 +56,7 @@ var reorderList = function (head) {
 };
 // Time Complexity: O(n)
 // Space Complexity: O(1)
+
 
 // 172-problem Factorial Trailing Zeroes
 var trailingZeroes = function (n) {
