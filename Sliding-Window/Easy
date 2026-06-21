@@ -1,3 +1,26 @@
+
+// 594-problem Longest Harmonious Subsequence
+var findLHS = function (nums) {
+    nums.sort((a, b) => a - b);
+    let left = 0;
+    let maxLen = 0;
+    for (let right = 0; right < nums.length; right++) {
+        while (nums[right] - nums[left] > 1) {
+            left++;
+        }
+
+        if (nums[right] - nums[left] === 1) {
+            maxLen = Math.max(
+                maxLen,
+                right - left + 1
+            );
+        }
+    }
+    return maxLen;
+};
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
 // 643-problem Maximum Average Subarray I
 var findMaxAverage = function (nums, k) {
   let sum = 0;
