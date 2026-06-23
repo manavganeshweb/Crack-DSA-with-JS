@@ -1,3 +1,4 @@
+
 // 904-problem Fruit Into Baskets
 var totalFruit = function(fruits) {
   let map = new Map();
