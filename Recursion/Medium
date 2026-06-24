@@ -70,6 +70,7 @@ var trailingZeroes = function (n) {
 // Time Complexity: O(log n)
 // Space Complexity: O(1)
 
+
 // 606-problem Construct String from Binary Tree
 var tree2str = function (root) {
     if (root === null) return ""
@@ -99,3 +100,25 @@ var kthGrammar = function (n, k) {
 };
 // Time Complexity: O(log n)
 // Space Complexity: O(1)
+
+// 1372-problem Longest ZigZag Path in a Binary Tree
+var longestZigZag = function (root) {
+    let ans = 0
+    function dfs(node, direction, length) {
+        if (!node) return;
+        ans = Math.max(ans, length);
+        if (direction === "left") {
+            dfs(node.right, "right", length + 1);
+            dfs(node.left, "left", 1);
+        } else {
+
+            dfs(node.left, "left", length + 1);
+            dfs(node.right, "right", 1);
+        }
+    }
+    dfs(root.left, "left", 1);
+    dfs(root.right, "right", 1);
+    return ans;
+};
+// Time Complexity: O(n)
+// Space Complexity: O(h)
