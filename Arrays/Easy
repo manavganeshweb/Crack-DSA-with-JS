@@ -74,3 +74,20 @@ var reverseStr = function(s, k) {
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 
+// 724-problem Find Pivot Index
+var pivotIndex = function(nums) {
+   let total =0
+   for(let num of nums){
+       total+=num
+   }
+   let leftSum = 0
+   for(let i=0;i<nums.length;i++){
+       if(leftSum === total - leftSum - nums[i]){
+           return i
+       }
+       leftSum += nums[i]
+   }
+   return -1
+};
+// Time Complexity: O(n)
+// Space Complexity: O(1)
