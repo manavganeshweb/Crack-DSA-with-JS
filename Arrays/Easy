@@ -2,6 +2,19 @@
 // 001-problem Two sum
 //Hashing-Medium 
 
+// 121-problem Best Time to Buy and Sell Stock
+var maxProfit = function(prices) {
+    let min = prices[0]
+    let maxProfit = 0
+    for(let price of prices){
+        min = Math.min(min, price)
+        p = price - min
+        maxProfit = Math.max(maxProfit, p)
+    }
+    return maxProfit
+};
+// Time Complexity: O(n)
+// Space Complexity: O(1)
 
 // 283-problem move zeroes
 var moveZeroes = function(nums) {
